@@ -149,8 +149,8 @@ def read_squad_examples(input_file, is_training, version_2_with_negative):
                     answer_offset = answer["answer_start"]
                     answer_length = len(orig_answer_text)
                     if answer_offset>len(char_to_word_offset)-1:
-                        logger.warning("样本错误: '%s' vs. '%s'",
-                                           actual_text, cleaned_answer_text)
+                        logger.warning("样本错误: '%s'  offfset vs. length'%s'",
+                                           answer_offset, len(char_to_word_offset))
                         continue
                     start_position = char_to_word_offset[answer_offset]
                     end_position = answer_offset + answer_length - 1
