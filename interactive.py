@@ -29,7 +29,7 @@ parser.add_argument(
     default=None,
     type=str,
     required=True,
-    help="Model type selected in the list: " + ", ".join(MODEL_CLASSES.keys()))
+    help="Model type selected in the list: ")
 
 parser.add_argument(
     '--version_2_with_negative',
@@ -69,21 +69,27 @@ parser.add_argument(
     help=
     "If null_score - best_non_null is greater than the threshold predict null."
 )
+parser.add_argument(
+    "--state_dict",
+    default=None,
+    type=str,
+    required=True,
+    help="model para after pretrained")
+
 args = parser.parse_args()
-args.device = None
-args.eval_batch_size = args.per_gpu_eval_batch_size * max(1, args.n_gpu)
 args.n_gpu = torch.cuda.device_count()
+args.eval_batch_size = args.per_gpu_eval_batch_size * max(1, args.n_gpu)
 device = torch.device(
     "cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
-
+args.device = device
 tokenizer = BertTokenizer.from_pretrained(
     'bert-base-chinese', do_lower_case=False)
 config = BertConfig.from_pretrained('bert-base-chinese')
 model = BertForQuestionAnswering(config)
-model_state_dict = "pytorch_model.bin"
+model_state_dict = args.state_dict
 model.load_state_dict(torch.load(model_state_dict))
 model.eval()
-input_file = "/Users/danbin/ml-project/chinese-qa-with-bert/input.json"
+input_file = args.predict_file
 
 
 def run():
