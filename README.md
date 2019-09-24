@@ -1,19 +1,20 @@
 <h1 align="left">基于预训练模型BERT的阅读理解</h1>
 
 
-Here we are going to bulding a machine reading comprehension system using pretrained model Bert from google, the latest advances in deep learning for NLP.
+Here we are going to building a machine reading comprehension system using pretrained model bert from google, the latest advances in deep learning for NLP.
 
-Stanford Question Answering Dataset (SQuAD) is one of the first large reading comprehension datasets in English. From the perspective of model, the the inputs come in the form of a Context / Question pair, and the outputs are Answers: pairs of integers, indexing the start and the end of the answer's text contained inside the Context. 
+Stanford Question Answering Dataset (SQuAD) is one of the first large reading comprehension datasets in English. From the perspective of model, the inputs come in the form of a Context / Question pair, and the outputs are Answers: pairs of integers, indexing the start and the end of the answer's text contained inside the Context. 
 [The 2nd Evaluation Workshop on Chinese Machine Reading Comprehension(2018)](https://github.com/ymcui/cmrc2018) release part of the datasets similar to SQuAD, which we used in this example.
 
 The model is built on top of [pytorch-transformers](https://github.com/huggingface/pytorch-transformers) which help to use pretrained model like BERT, GPT, GPT2 to downstream tasks. The repository includes various utilities and training scripts for multiple NLP tasks, including Question Answering. Below are two relate post about QA using bert:
 
 >-[Understanding text with BERT](https://blog.scaleway.com/2019/understanding-text-with-bert/)
+
 >-[Extending Google-BERT as Question and Answering model and Chatbot](https://medium.com/datadriveninvestor/extending-google-bert-as-question-and-answering-model-and-chatbot-e3e7b47b721a)
 
 <h2 align="center">Getting Started</h2>
 
-#### 1. Prepare data,the virtual python environment and install the package in requirements.txt
+#### 1. Prepare data, the virtual python environment and install the package in requirements.txt
 
 #### 2. Run the command below to fine tune
 
@@ -52,11 +53,17 @@ the input json string contains context and question is like this:
 ```
 ### Below are some results for show
 
+```json
+{"AVERAGE": "27.276", "F1": "54.552", "EM": "0.000", "TOTAL": 1002, "SKIP": 0, "FILE": "~/chinese-qa-with-bert/output/predictions_.
+json"}
+```
 
+```json
+Please Enter:{"context": "江苏路街道是中国上海市长宁区下辖的一个街道办事处，位于长宁区最东部，东到镇宁路接邻静安区的静安寺街道，北到武定西路接邻静安区的曹家渡 街道，南到华山路接邻徐汇区的湖南路街道，西部界限为长宁路、安西路、武夷路等。面积1.52平方公里，户籍人口5.26万人，下辖13个居委会。长宁区区政府设在该街道辖区内的 愚园路（近安西路）。江苏路街道的主要街道江苏路、愚园路、长宁路、武夷路、武定西路、延安西路，均为上海公共租界越界筑路，是花园洋房集中的街区，是愚园路历史文化风 貌区的主体部分。较著名的近代建筑有中西女中（今上海市第三女子中学）、王伯群及汪精卫公馆（今长宁区少年宫）、西园公寓等。江苏路、长宁路、延安西路（高架）等经过拓 宽，已经形成上海市的交通干道。上海市轨道交通二号线经过该街道辖区，设有江苏路站。江苏路街道下辖歧山居委会、江苏居委会、万村居委会、南汪居委会、东浜居委会、愚三 居委会、曹家堰居委会、西浜居委会、福世居委会、长新居委会、华山居委会、利西居委会、北汪居委会。","qas": [{"question": "江苏路街道在上海市的什么地方？"}]}
+Evaluating: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  2.61it/s]
 
-
+江 苏 路 街 道 是 中 国 上 海 市 长 宁 
+```
 
 
 Just For Learn, More Optimization to Do
-
-
