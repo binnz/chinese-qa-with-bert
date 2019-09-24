@@ -75,6 +75,10 @@ parser.add_argument(
     type=str,
     required=True,
     help="model para after pretrained")
+parser.add_argument(
+    "--no_cuda",
+    action='store_true',
+    help="Whether not to use CUDA when available")
 
 args = parser.parse_args()
 args.n_gpu = torch.cuda.device_count()
