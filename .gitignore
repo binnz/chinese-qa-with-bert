@@ -1,0 +1,7 @@
+lib/
+bin/
+include/
+.vscode
+__pycache__
+cache*
+data*
