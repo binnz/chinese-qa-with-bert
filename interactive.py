@@ -79,7 +79,7 @@ parser.add_argument(
     "--no_cuda",
     action='store_true',
     help="Whether not to use CUDA when available")
-
+g
 args = parser.parse_args()
 args.n_gpu = torch.cuda.device_count()
 args.eval_batch_size = args.per_gpu_eval_batch_size * max(1, args.n_gpu)
@@ -98,10 +98,10 @@ input_file = args.predict_file
 
 def run():
     while True:
-        raw_text = input(">>> ")
+        raw_text = input("Please Enter:")
         while not raw_text:
             print('Input should not be empty!')
-            raw_text = input(">>> ")
+            raw_text = input("Please Enter:")
         context = ''
         question = []
         try:
@@ -115,6 +115,7 @@ def run():
             for i in range(len(raw_qas)):
                 question.append(raw_qas[i]['question'])
         except Exception as identifier:
+            print(identifier)
             continue
         with open(input_file, "r") as reader:
             orig_data = json.load(reader)["data"]

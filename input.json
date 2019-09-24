@@ -1,19 +1,22 @@
-[
-    {
-        "paragraphs": [
-            {
-                "id": "",
-                "context": "fd",
-                "qas": [
-                    {
-                        "question": "fadsf",
-                        "id": "",
-                        "answers": []
-                    }
-                ]
-            }
-        ],
-        "id": "",
-        "title": ""
-    }
-]
+{
+    "version": "v1.0",
+    "data": [
+        {
+            "paragraphs": [
+                {
+                    "id": "",
+                    "context": "fd",
+                    "qas": [
+                        {
+                            "question": "fadsf",
+                            "id": "",
+                            "answers": []
+                        }
+                    ]
+                }
+            ],
+            "id": "",
+            "title": ""
+        }
+    ]
+}
