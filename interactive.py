@@ -11,7 +11,7 @@ parser.add_argument(
     "--train_file",
     default=None,
     type=str,
-    required=True,
+    required=False,
     help="SQuAD json for training. E.g., train-v1.1.json")
 parser.add_argument(
     "--predict_file",
@@ -24,14 +24,13 @@ parser.add_argument(
     default=None,
     type=str,
     required=True,
-    help="Model type selected in the list: " + ", ".join(MODEL_CLASSES.keys()))
+    help="Model type selected in the list: ")
 parser.add_argument(
     "--model_name_or_path",
     default=None,
     type=str,
     required=True,
-    help="Path to pre-trained model or shortcut name selected in the list: " +
-    ", ".join(ALL_MODELS))
+    help="Path to pre-trained model or shortcut name selected in the list: ")
 parser.add_argument(
     "--output_dir",
     default=None,
@@ -272,11 +271,11 @@ def run():
             print(identifier)
             continue
         with open(input_file, "r") as reader:
-            orig_data = json.load(reader)["data"]
-            orig_data[0]['paragraphs'][0]['context'] = context
+            orig_data = json.load(reader)
+            orig_data["data"][0]['paragraphs'][0]['context'] = context
             for i in range(len(question)):
-                orig_data[0]['paragraphs'][0]['qas'][i]['question'] = question[
-                    i]
+                orig_data["data"][0]['paragraphs'][0]['qas'][i][
+                    'question'] = question[i]
         with open(input_file, "w") as writer:
             writer.write(json.dumps(orig_data, indent=4) + "\n")
 
