@@ -5,3 +5,6 @@ include/
 __pycache__
 cache*
 data*
+.idea/*
+output/*
+runs/*
